@@ -6,7 +6,7 @@ import React from 'react'
 
 import {IPropertyTemplate} from '../../blocks/board'
 
-import {CalculationOptions} from './options'
+import {TableCalculationOptions} from './options'
 
 describe('components/calculations/Options', () => {
     test('should match snapshot', () => {
@@ -15,7 +15,7 @@ describe('components/calculations/Options', () => {
         } as IPropertyTemplate
 
         const component = (
-            <CalculationOptions
+            <TableCalculationOptions
                 value={'none'}
                 onChange={() => {}}
                 property={property}
@@ -32,7 +32,7 @@ describe('components/calculations/Options', () => {
         } as IPropertyTemplate
 
         const component = (
-            <CalculationOptions
+            <TableCalculationOptions
                 value={'none'}
                 menuOpen={true}
                 onChange={() => {}}

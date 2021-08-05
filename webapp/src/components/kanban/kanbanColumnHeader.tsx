@@ -20,6 +20,8 @@ import Menu from '../../widgets/menu'
 import MenuWrapper from '../../widgets/menuWrapper'
 import Editable from '../../widgets/editable'
 import Label from '../../widgets/label'
+import BoardOptions from '../calculations/boardOptions'
+import {Options} from '../calculations/options'
 
 type Props = {
     board: Board
@@ -31,6 +33,8 @@ type Props = {
     addCard: (groupByOptionId?: string) => Promise<void>
     propertyNameChanged: (option: IPropertyOption, text: string) => Promise<void>
     onDropToColumn: (srcOption: IPropertyOption, card?: Card, dstOption?: IPropertyOption) => void
+
+    // calculationsMenuOpen: boolean
 }
 
 export default function KanbanColumnHeader(props: Props): JSX.Element {
@@ -65,6 +69,9 @@ export default function KanbanColumnHeader(props: Props): JSX.Element {
     if (isOver) {
         className += ' dragover'
     }
+
+    const [menuState, setMenuState] = useState<Map<string, boolean>>(new Map())
+    console.log(menuState)
 
     return (
         <div
@@ -108,7 +115,23 @@ export default function KanbanColumnHeader(props: Props): JSX.Element {
                         spellCheck={true}
                     />
                 </Label>}
-            <Button>{`${group.cards.length}`}</Button>
+
+            <Button
+                onClick={() => {
+                    console.log('AAA')
+                    menuState.set(group.option.id, true)
+                    setMenuState(menuState)
+                }}
+            >
+                {`${group.cards.length}`}
+            </Button>
+
+            <BoardOptions
+                value={Options.none.value}
+                menuOpen={menuState.get(group.option.id)}
+                onMenuClose={() => {}}
+            />
+
             <div className='octo-spacer'/>
             {!props.readonly &&
                 <>

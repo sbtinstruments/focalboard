@@ -8,7 +8,7 @@ import {IPropertyTemplate} from '../../blocks/board'
 
 import ChevronUp from '../../widgets/icons/chevronUp'
 
-import {CalculationOptions, Options} from './options'
+import {TableCalculationOptions, Options} from './options'
 
 import Calculations from './calculations'
 import './calculation.scss'
@@ -44,7 +44,7 @@ const Calculation = (props: Props): JSX.Element => {
             {
                 props.menuOpen && (
                     <div >
-                        <CalculationOptions
+                        <TableCalculationOptions
                             value={value}
                             menuOpen={props.menuOpen}
                             onClose={props.onMenuClose}

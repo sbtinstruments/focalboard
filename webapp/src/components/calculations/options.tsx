@@ -87,7 +87,7 @@ type Props = {
     property: IPropertyTemplate
 }
 
-const CalculationOptions = (props: Props): JSX.Element => {
+const TableCalculationOptions = (props: Props): JSX.Element => {
     const options = [...optionsByType.get('common')!]
     if (optionsByType.get(props.property.type)) {
         options.push(...optionsByType.get(props.property.type)!)
@@ -99,8 +99,8 @@ const CalculationOptions = (props: Props): JSX.Element => {
             value={Options[props.value]}
             isMulti={false}
             isClearable={true}
-            name={'calculation_options'}
-            className={'CalculationOptions'}
+            name={'tableCalculation_options'}
+            className={'tableCalculationOptions'}
             options={options}
             menuPlacement={'top'}
             isSearchable={false}
@@ -125,7 +125,9 @@ const CalculationOptions = (props: Props): JSX.Element => {
 }
 
 export {
-    CalculationOptions,
+    TableCalculationOptions,
     Options,
     Option,
+    styles,
+    optionsByType,
 }
